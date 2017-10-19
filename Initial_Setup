@@ -1,0 +1,29 @@
+---- This document will guide to do initial setup process after server installation ----
+
+To access remote server
+  Install openssh 
+  you can choose openssh package while server installation if not install package
+  
+Manage Users
+  To add a new user login 
+    adduser username
+  To give sudo permision
+    usermod -aG sudo username
+  To delete a user
+    deluser --remove-home username (--remove-home to delete home directory of the user)
+
+--- Firewall setting (UFW Uncomplicated Firewall) -- block/allow incoming/outgoing connections
+To check status  sudo ufw status
+To enable firewall  sudo ufw enable
+To disable   sudo ufw disable
+To enable SSH in firewall sudo ufw allow 22  (port num for ssh is 22 u can either use ssh)
+Allow Incoming SSH from Specific IP Address or Subnet sudo ufw allow from 15.15.15.0/24  to any port 22    
+Allow All Incoming HTTP and HTTPS  sudo ufw allow proto tcp from any to any port 80,443
+Denying Connections  sudo ufw deny http
+Deleting Rules  sudo ufw delete allow http
+
+
+Reference Link
+https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04
+https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-16-04
+https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands
